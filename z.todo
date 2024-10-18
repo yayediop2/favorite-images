@@ -1,0 +1,66 @@
+    ☐ #### **Part 1: Image Picker**
+    ☐ 1. **Set Up Project:**
+       ☐ Initialize the mobile app project (e.g., Flutter).
+       ☐ Add the `image_picker` package to the project.
+     
+    ☐ 2. **Create the AppBar:**
+       ☐ Add an AppBar with an `IconButton` for the image upload options.
+       The button should trigger a modal with two options: 
+         "Open Camera"
+         "Access Gallery"
+    
+    ☐ 3. **Camera and Gallery Integration:**
+       ☐ Implement functionality to:
+         Open the camera to capture images.
+         Access the device's gallery to pick an image.
+       ☐ Ensure compatibility for both iOS and Android:
+         Update the **Info.plist** file for iOS to request permission for camera and gallery access.
+    
+    ☐ 4. **Handle No Image Selected:**
+       Show a default message like "No images selected" when no images have been chosen or added.
+     
+    ☐ #### **Part 2: Image Gallery**
+    ☐ 5. **Create a GridList:**
+       Add a `GridList` or `GridView` to display selected or captured images.
+       Each selected image from the camera or gallery should immediately appear in the grid.
+    
+    ☐ 6. **Image Viewing:**
+       Implement functionality to tap on any image in the grid to view it in full-screen mode.
+       Provide navigation (e.g., back button) to exit full-screen view.
+    
+    ☐ 7. **Zoom In/Out Feature:**
+       Add pinch-to-zoom functionality in the full-screen view so users can zoom in/out to see image details.
+    
+    ☐ #### **Bonus Features (Optional):**
+    
+    ☐ 1. **Image Editing:**
+       Add basic editing functionalities:
+         Cropping
+         Rotating
+         Adding filters
+       Enable the user to edit the image before adding it to the gallery.
+    
+    ☐ 2. **Cloud Storage Integration:**
+       Integrate cloud storage (e.g., Firebase, AWS S3) to store images remotely.
+       Implement user authentication if needed (optional).
+       Sync the local gallery with cloud storage for backup.
+    
+    ☐ 3. **Sharing Options:**
+       Implement sharing functionality to allow users to share their images through:
+         Social media platforms
+         Email or messaging apps
+     
+    ☐ #### **General Tasks:**
+    ☐ 1. **UI/UX Design:**
+       Design a clean and user-friendly interface.
+       Ensure responsiveness and compatibility across devices.
+     
+    ☐ 2. **Testing:**
+       Test camera and gallery functionality on both iOS and Android.
+       Test full-screen view and zoom functionality.
+       Test the app in different scenarios (e.g., no images, multiple images).
+    
+    ☐ 3. **Deployment:**
+       Finalize the app for release by adding app icons, setting permissions, and testing on different devices.
+       Deploy to the App Store (iOS) and Google Play (Android) if needed.
+     
