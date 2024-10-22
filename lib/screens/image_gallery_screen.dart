@@ -12,16 +12,24 @@ class ImageGalleryScreen extends StatefulWidget {
 }
 
 class ImageGalleryScreenState extends State<ImageGalleryScreen> {
-  final List<XFile> _imageFiles = [];
+  // Using ValueNotifier to persist the list
+  final ValueNotifier<List<XFile>> _imageFilesNotifier = ValueNotifier<List<XFile>>([]);
   final _imagePickerService = ImagePickerService();
 
   Future<void> _pickImage(ImageSource source) async {
     final selectedImage = await _imagePickerService.pickImage(source);
     if (selectedImage != null) {
-      setState(() {
-        _imageFiles.add(selectedImage);
-      });
+      // Update the list through the ValueNotifier
+      _imageFilesNotifier.value = [..._imageFilesNotifier.value, selectedImage];
+      print('Added image: ${selectedImage.path}'); // Debug print
+      print('Current image count: ${_imageFilesNotifier.value.length}'); // Debug print
     }
+  }
+
+  @override
+  void dispose() {
+    _imageFilesNotifier.dispose(); // Clean up
+    super.dispose();
   }
 
   @override
@@ -67,14 +75,20 @@ class ImageGalleryScreenState extends State<ImageGalleryScreen> {
           ),
         ],
       ),
-      body: GalleryGrid(
-        imageFiles: _imageFiles,
-        onImageTap: (imageFile) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => FullScreenImage(imageFile: imageFile),
-            ),
+      body: ValueListenableBuilder<List<XFile>>(
+        valueListenable: _imageFilesNotifier,
+        builder: (context, imageFiles, child) {
+          print('Building grid with ${imageFiles.length} images'); // Debug print
+          return GalleryGrid(
+            imageFiles: imageFiles,
+            onImageTap: (imageFile) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FullScreenImage(imageFile: imageFile),
+                ),
+              );
+            },
           );
         },
       ),
