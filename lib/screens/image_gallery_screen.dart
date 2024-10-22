@@ -21,8 +21,6 @@ class ImageGalleryScreenState extends State<ImageGalleryScreen> {
     if (selectedImage != null) {
       // Update the list through the ValueNotifier
       _imageFilesNotifier.value = [..._imageFilesNotifier.value, selectedImage];
-      print('Added image: ${selectedImage.path}'); // Debug print
-      print('Current image count: ${_imageFilesNotifier.value.length}'); // Debug print
     }
   }
 
@@ -78,7 +76,6 @@ class ImageGalleryScreenState extends State<ImageGalleryScreen> {
       body: ValueListenableBuilder<List<XFile>>(
         valueListenable: _imageFilesNotifier,
         builder: (context, imageFiles, child) {
-          print('Building grid with ${imageFiles.length} images'); // Debug print
           return GalleryGrid(
             imageFiles: imageFiles,
             onImageTap: (imageFile) {

@@ -3,7 +3,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'platform_image.dart';
 
-class GalleryGrid extends StatelessWidget { // Changed to StatelessWidget
+class GalleryGrid extends StatelessWidget { 
   final List<XFile> imageFiles;
   final Function(XFile) onImageTap;
 
@@ -15,8 +15,6 @@ class GalleryGrid extends StatelessWidget { // Changed to StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    print('GalleryGrid building with ${imageFiles.length} images'); // Debug print
-
     if (imageFiles.isEmpty) {
       return const Center(child: Text('No images selected'));
     }
@@ -37,7 +35,6 @@ class GalleryGrid extends StatelessWidget { // Changed to StatelessWidget
           itemCount: imageFiles.length,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            print('Building item $index: ${imageFiles[index].path}'); // Debug print
             return GestureDetector(
               onTap: () => onImageTap(imageFiles[index]),
               child: Container(
